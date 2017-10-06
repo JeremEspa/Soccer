@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Player Detail</title>
+    </head>
+    <body>
+        <a href="{{ path('listplayer_list') }}">Retour à la liste</a>
+        <h1>{{ player.firstname }} {{ player.lastname }} <br> </h1>
+          Club: {{player.team}} <br>
+          Poste: {{player.position}} <br>
+          Note : {{player.rate}} <br>
+
+
+        <img src="{{ asset(player.image) }}" />
+    </body>
+</html>

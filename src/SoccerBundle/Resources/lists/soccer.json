@@ -1,0 +1,42 @@
+{
+    "id": 1,
+    "name": "Joueurs de Foot",
+    "players": [
+        {
+            "id": 20,
+            "firstname": "Leo",
+            "lastname": "MESSI",
+            "team": "Barça",
+            "position": "Attaquant",
+            "image": "MESSI_Leo.png",
+            "rate": 20
+        },
+        {
+            "id": 18,
+            "firstname": "Samuel",
+            "lastname": "UMTITI",
+            "team": "Barça",
+            "position": "Défenseur",
+            "image": "UMTITI_Samuel.jpg",
+            "rate": 18
+        },
+        {
+            "id": 9,
+            "firstname": "Alexandre",
+            "lastname": "LACAZETTE",
+            "team": "Arsenal",
+            "position": "Attaquant",
+            "image": "LACAZETTE_Alexandre.png",
+            "rate": 9
+        },
+        {
+            "id": 2,
+            "firstname": "Nabil",
+            "lastname": "FEKIR",
+            "team": "OL",
+            "position": "Attaquant",
+            "image": "FEKIR_Nabil.jpg",
+            "rate": 2
+        }
+    ]
+}
