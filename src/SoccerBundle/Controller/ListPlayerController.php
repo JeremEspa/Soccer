@@ -14,12 +14,10 @@ class ListPlayerController extends Controller
      public function listAction()
      {
 
-
          $playerRepository = $this->getDoctrine()->getRepository(players::class);
          $players = $playerRepository->findAll();
 
          return $this->render('SoccerBundle:Default:index.html.twig', [
-
              'players' => $players,
          ]);
      }

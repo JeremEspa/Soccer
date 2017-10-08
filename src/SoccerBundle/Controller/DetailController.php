@@ -18,14 +18,9 @@ class DetailController extends Controller
     {
       $playerRepository = $this->getDoctrine()->getRepository(players::class);
       $player = $playerRepository->find($playerId);
-
-
-
-        if ($player != null)
-        return $this->render('SoccerBundle:Default:player.html.twig', [
+      return $this->render('SoccerBundle:Default:player.html.twig', [
             'player' => $player,
         ]);
-      else
-          return $this->render("SoccerBundle:Default:404.html.twig");
+
     }
 }

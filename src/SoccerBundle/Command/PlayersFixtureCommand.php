@@ -24,12 +24,13 @@ class PlayersFixtureCommand extends ContainerAwareCommand
     {
 
       $players = new players();
-      $players->setFirstname["Alexandre"];
-      $players->setLastname("Lacazette");
-      $players->setTeam("Arsonal");
-      $players->setPosition("Attaquant");
+      $players->setFirstname("firstname");
+      $players->setLastname("lastname");
+      $players->setTeam("team");
+      $players->setPosition("position");
       $players->setImage("image");
-      $players->setRate("");
+      $players->setRate("rate");
+
 
       $em = $this->getContainer()->get('doctrine.orm.entity_manager');
 
@@ -39,15 +40,8 @@ class PlayersFixtureCommand extends ContainerAwareCommand
       //Insère les objets persistés dans la base de donnée
       $em->flush();
 
-      $listplayers = new Listplayers();
-             $listplayers->setName('Notation des projets des élèves');
-             $listplayers->setGithubRepository('https://github.com/tentacode/students-review');
-             $listplayers->setPlayersIds([1]);
+      $output->writeln('<info>OK !</info>');
 
-             $em->persist($team);
-             $em->flush();
-
-        $output->writeln('Jérémie a une petite Bite');
     }
 
 }
