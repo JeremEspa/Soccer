@@ -5,12 +5,12 @@ namespace SoccerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * players
+ * Player
  *
  * @ORM\Table(name="players")
- * @ORM\Entity(repositoryClass="SoccerBundle\Repository\playersRepository")
+ * @ORM\Entity(repositoryClass="SoccerBundle\Repository\PlayerRepository")
  */
-class players
+class Player
 {
     /**
      * @var int
@@ -57,14 +57,6 @@ class players
     private $image;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="rate", type="smallint")
-     */
-    private $rate;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -79,7 +71,7 @@ class players
      *
      * @param string $firstname
      *
-     * @return players
+     * @return Player
      */
     public function setFirstname($firstname)
     {
@@ -103,7 +95,7 @@ class players
      *
      * @param string $lastname
      *
-     * @return players
+     * @return Player
      */
     public function setLastname($lastname)
     {
@@ -127,7 +119,7 @@ class players
      *
      * @param string $team
      *
-     * @return players
+     * @return Player
      */
     public function setTeam($team)
     {
@@ -151,7 +143,7 @@ class players
      *
      * @param string $position
      *
-     * @return players
+     * @return Player
      */
     public function setPosition($position)
     {
@@ -175,7 +167,7 @@ class players
      *
      * @param string $image
      *
-     * @return players
+     * @return Player
      */
     public function setImage($image)
     {
@@ -194,27 +186,4 @@ class players
       return 'bundles/soccer/img/'.$this->lastname.'_'.$this->firstname.'.png';
   }
 
-    /**
-     * Set rate
-     *
-     * @param integer $rate
-     *
-     * @return players
-     */
-    public function setRate($rate)
-    {
-        $this->rate = $rate;
-
-        return $this;
-    }
-
-    /**
-     * Get rate
-     *
-     * @return int
-     */
-    public function getRate()
-    {
-        return $this->rate;
-    }
 }

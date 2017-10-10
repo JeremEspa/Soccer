@@ -3,11 +3,10 @@ namespace SoccerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use SoccerBundle\Repository\playersRepository;
-use SoccerBundle\Repository\ListplayersRepository;
+use SoccerBundle\Repository\PlayerRepository;
 use Symfony\Component\HttpFoundation\Response;
-use SoccerBundle\Entity\players;
-use SoccerBundle\Entity\Listplayers;
+use SoccerBundle\Entity\Player;
+
 
 class DetailController extends Controller
 {
@@ -16,8 +15,9 @@ class DetailController extends Controller
      */
     public function detailAction($playerId)
     {
-      $playerRepository = $this->getDoctrine()->getRepository(players::class);
+      $playerRepository = $this->getDoctrine()->getRepository(Player::class);
       $player = $playerRepository->find($playerId);
+
       return $this->render('SoccerBundle:Default:player.html.twig', [
             'player' => $player,
         ]);

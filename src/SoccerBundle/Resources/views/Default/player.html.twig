@@ -5,7 +5,6 @@
 {% block content %}
   Club: {{player.team}} <br>
   Poste: {{player.position}} <br>
-  Note : {{player.rate}} <br>
     <img src="{{ asset(player.image) }}" /><br>
     <a href="{{ path('listplayer_list') }}">Retour à la liste</a>
 {% endblock %}
