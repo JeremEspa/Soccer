@@ -49,7 +49,7 @@ class RegisterController extends Controller
              ]);
          }
 
-         private function sendWelcomeEmail($user)
+      private function sendWelcomeEmail($user)
          {
       $message = (new \Swift_Message('Bienvenue sur Note ton Player!'))
           ->setFrom('jeremie.esparel@ynov.com')

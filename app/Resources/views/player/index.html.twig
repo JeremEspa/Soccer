@@ -1,7 +1,10 @@
 {% extends 'bootstrap/layout.html.twig' %}
 
 {% block content %}
-    <h1>Players list</h1>
+<div class="jumbotron">
+    <h1>Liste des Players</h1>
+</div>
+
 
     <table>
         <thead>
@@ -26,12 +29,12 @@
                 <td>{{ player.image }}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('admin_player_show', { 'id': player.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_player_edit', { 'id': player.id }) }}">edit</a>
-                        </li>
+
+                        <a href="{{ path('admin_player_show', { 'id': player.id }) }}"><input type="submit" value="Show"</a>
+
+
+                        <a href="{{ path('admin_player_edit', { 'id': player.id }) }}"><input type="submit" value="Edit"</a>
+
                     </ul>
                 </td>
             </tr>

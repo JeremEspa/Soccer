@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1><i class="fa fa-user"></i> Détail du joueur</h1>
+        <h1><i class="fa fa-user"></i> Détail du Player</h1>
     </div>
 
     <div class="row">
@@ -22,22 +22,24 @@
             </div>
         </div>
     </div>
-    <hr>
- <h2>Liste des avis</h2>
- {% for review in player.reviews %}
-     <div class="card">
-         <div class="card-body">
-             <h4 class="card-title">{{ review.user.email }} a noté {{ review.rating }} / 5</h4>
-         </div>
+
+<hr class="calotte">
+<h2>Liste des avis</h2>
+{% for review in player.reviews %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{ review.user.email }} a noté {{ review.rating }} / 5</h4>
+        </div>
     </div>
 
-
  {% endfor %}
+ <hr class="calotte">
 
- <hr>
- {% if review_form %}
- <h2>Ajouter une note</h2>
+    {% if review_form %}
+        <h2>Ajouter une note</h2>
 
- {{ form(review_form) }}
- {% endif %}
+        {% form_theme review_form 'bootstrap/form_theme.html.twig' %}
+        {{ form(review_form) }}
+
+    {% endif %}
 {% endblock %}

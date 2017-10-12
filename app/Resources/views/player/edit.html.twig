@@ -1,7 +1,9 @@
 {% extends 'bootstrap/layout.html.twig' %}
 
 {% block content %}
-    <h1>Player edit</h1>
+<div class="jumbotron">
+    <h1>Edition Player</h1>
+</div>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -9,13 +11,13 @@
     {{ form_end(edit_form) }}
 
     <ul>
-        <li>
-            <a href="{{ path('admin_player_index') }}">Back to the list</a>
-        </li>
-        <li>
+
+            <a href="{{ path('admin_player_index') }}"><input type="submit" value="Back to the list"> </a>
+
+
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
+
     </ul>
 {% endblock %}
