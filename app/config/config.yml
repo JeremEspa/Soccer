@@ -41,6 +41,9 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
 
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -66,7 +69,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
-    host: '%mailer_host%'
+    host: '%mailer_host%1025'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }

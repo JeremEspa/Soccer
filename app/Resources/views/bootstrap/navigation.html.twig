@@ -1,0 +1,32 @@
+{% set route_name = app.request.attributes.get('_route') %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="{{ path('listplayer_list') }}">
+        <i class="fa fa-futbol-o"></i> Liste des joueurs
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if route_name == 'listplayer_list' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('listplayer_list') }}"><i class="fa fa-users"></i> Liste des joueurs</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_player_index') }}"><i class="fa fa-cogs"></i> Admin</a>
+                </li>
+            {% endif %}
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a class="nav-link" href="{{ path('login') }}"><i class="fa fa-key"></i> Se connecter</a>
+                {% else  %}
+                    <a class="nav-link" href="{{ path('logout') }}"><i class="fa fa-sign-out"></i> Se déconnecter ({{ app.user.username }})</a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>

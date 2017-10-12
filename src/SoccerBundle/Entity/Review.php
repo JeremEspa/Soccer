@@ -3,6 +3,7 @@
 namespace SoccerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Review
@@ -22,11 +23,18 @@ class Review
     private $id;
 
     /**
-   * @var int
-   *
-   * @ORM\Column(name="rating", type="integer")
-   */
-  private $rating;
+     * @var int
+     *
+     * @ORM\Column(name="rating", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "La note doit être comprise entre 1 et 5",
+     *      maxMessage = "La note doit être comprise entre 1 et 5"
+     * )
+     */
+     private $rating;
 
   /**
    * @var User
@@ -35,6 +43,14 @@ class Review
    * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
    */
   private $user;
+
+  /**
+   * @var Player
+   *
+   * @ORM\ManyToOne(targetEntity="SoccerBundle\Entity\Player", inversedBy="reviews")
+   * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+   */
+  private $player;
 
     /**
      * Get id
@@ -80,6 +96,7 @@ class Review
        $this->user = $user;
        return $this;
    }
+
    /**
     * Get user
     *
@@ -89,6 +106,29 @@ class Review
    {
        return $this->user;
    }
+
+   /**
+   * Set Player
+   *
+   * @param Player $player
+   *
+   * @return Review
+   */
+  public function setPlayer($player)
+  {
+      $this->player = $player;
+      return $this;
+  }
+
+  /**
+   * Get player
+   *
+   * @return Player
+   */
+  public function getPlayer()
+  {
+      return $this->player;
+  }
 
 
 }

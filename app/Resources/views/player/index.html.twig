@@ -1,0 +1,47 @@
+{% extends 'bootstrap/layout.html.twig' %}
+
+{% block content %}
+    <h1>Players list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Team</th>
+                <th>Position</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for player in players %}
+            <tr>
+                <td><a href="{{ path('admin_player_show', { 'id': player.id }) }}">{{ player.id }}</a></td>
+                <td>{{ player.firstname }}</td>
+                <td>{{ player.lastname }}</td>
+                <td>{{ player.team }}</td>
+                <td>{{ player.position }}</td>
+                <td>{{ player.image }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_player_show', { 'id': player.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_player_edit', { 'id': player.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_player_new') }}">Create a new player</a>
+        </li>
+    </ul>
+{% endblock %}

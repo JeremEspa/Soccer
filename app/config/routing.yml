@@ -1,3 +1,15 @@
+soccer_review:
+    resource: "@SoccerBundle/Controller/ReviewController.php"
+    type:     annotation
+
+soccer_player:
+    resource: "@SoccerBundle/Controller/PlayerController.php"
+    type:     annotation
+
+soccer_player:
+    resource: "@SoccerBundle/Controller/PlayerController.php"
+    type:     annotation
+
 secur:
     resource: "@SecurBundle/Controller/"
     type:     annotation

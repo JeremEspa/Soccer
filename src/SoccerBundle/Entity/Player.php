@@ -57,6 +57,13 @@ class Player
     private $image;
 
     /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="SoccerBundle\Entity\Review", mappedBy="player")
+     */
+     private $reviews;
+
+    /**
      * Get id
      *
      * @return int
@@ -185,5 +192,28 @@ class Player
   {
       return 'bundles/soccer/img/'.$this->lastname.'_'.$this->firstname.'.png';
   }
+
+  /**
+    * Set reviews
+    *
+    * @param array $reviews
+    *
+    * @return Player
+    */
+
+   public function setReviews($reviews)
+   {
+       $this->reviews = $reviews;
+       return $this;
+   }
+   /**
+    * Get reviews
+    *
+    * @return array
+    */
+   public function getReviews()
+   {
+       return $this->reviews;
+   }
 
 }

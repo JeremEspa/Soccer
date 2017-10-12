@@ -3,8 +3,41 @@
 {% block title %}{{ player.firstname }} {{ player.lastname }}{% endblock %}
 
 {% block content %}
-  Club: {{player.team}} <br>
-  Poste: {{player.position}} <br>
-    <img src="{{ asset(player.image) }}" /><br>
-    <a href="{{ path('listplayer_list') }}">Retour à la liste</a>
+    <div class="jumbotron">
+        <h1><i class="fa fa-user"></i> Détail du joueur</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img class="img-thumbnail float-right" src="{{ asset(player.image) }}" />
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Prénom : {{ player.firstname }}</li>
+                    <li class="list-group-item">Nom : {{ player.lastname }}</li>
+                    <li class="list-group-item">Club : {{ player.team }}</li>
+                    <li class="list-group-item">Poste : {{ player.position }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+ <h2>Liste des avis</h2>
+ {% for review in player.reviews %}
+     <div class="card">
+         <div class="card-body">
+             <h4 class="card-title">{{ review.user.email }} a noté {{ review.rating }} / 5</h4>
+         </div>
+    </div>
+
+
+ {% endfor %}
+
+ <hr>
+ {% if review_form %}
+ <h2>Ajouter une note</h2>
+
+ {{ form(review_form) }}
+ {% endif %}
 {% endblock %}

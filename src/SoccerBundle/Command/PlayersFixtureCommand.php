@@ -2,11 +2,13 @@
 
 namespace SoccerBundle\Command;
 
+
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Finder\Finder;
 use SoccerBundle\Entity\Player;
 use SoccerBundle\Entity\User;
 use SoccerBundle\Entity\Review;
@@ -29,6 +31,54 @@ class PlayersFixtureCommand extends ContainerAwareCommand
       $player->setFirstname("Alexandre");
       $player->setLastname("Lacazette");
       $player->setTeam("Arsenal");
+      $player->setPosition("Attaquant");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Samuel");
+      $player->setLastname("Umtiti");
+      $player->setTeam("Barcelone");
+      $player->setPosition("Defenseur");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Nabil");
+      $player->setLastname("Fekir");
+      $player->setTeam("OL");
+      $player->setPosition("Attaquant");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Leo");
+      $player->setLastname("Messi");
+      $player->setTeam("Barcelone");
       $player->setPosition("Attaquant");
       $player->setImage("image");
 
@@ -70,15 +120,19 @@ class PlayersFixtureCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $doctrine = $this->getContainer()->get('doctrine');
         $users = $doctrine->getRepository(User::class)->findAll();
+        $players = $doctrine->getRepository(Player::class)->findAll();
 
 
         foreach ($users as $user) {
+          foreach ($players as $player){
                 $review = new Review();
                 $review->setUser($user);
-                $review->setRating(mt_rand(0, 5));
+                $review->setPlayer($player);
+                $review->setRating(mt_rand(1, 5));
 
                 $em->persist($review);
             }
+          }
 
         $em->flush();
         $output->writeln('<info>Import reviews OK !</info>');
