@@ -91,8 +91,137 @@ class PlayersFixtureCommand extends ContainerAwareCommand
       //Insère les objets persistés dans la base de donnée
       $em->flush();
 
+      $player = new Player();
+      $player->setFirstname("Cristiano");
+      $player->setLastname("Ronaldo");
+      $player->setTeam("Real Madrid");
+      $player->setPosition("Attaquant");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Sergio");
+      $player->setLastname("Ramos");
+      $player->setTeam("Real Madrid");
+      $player->setPosition("Defenseur");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Alexis");
+      $player->setLastname("Sanchez");
+      $player->setTeam("Arsenal");
+      $player->setPosition("Attaquant");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("");
+      $player->setLastname("Neymar");
+      $player->setTeam("Paris SG");
+      $player->setPosition("Attaquant");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Paul");
+      $player->setLastname("Pogba");
+      $player->setTeam("Manchester United");
+      $player->setPosition("Milieu");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("");
+      $player->setLastname("Isco");
+      $player->setTeam("Real Madrid");
+      $player->setPosition("Milieu");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Juan");
+      $player->setLastname("Mata");
+      $player->setTeam("Manchester United");
+      $player->setPosition("Milieu");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
+      $player = new Player();
+      $player->setFirstname("Kylian");
+      $player->setLastname("Mbappé");
+      $player->setTeam("Paris SG");
+      $player->setPosition("Attaquant");
+      $player->setImage("image");
+
+
+      $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+
+      //Met dans une file d'attente
+      $em->persist($player);
+
+      //Insère les objets persistés dans la base de donnée
+      $em->flush();
+
       $this->importUsers($output);
       $this->importReviews($output);
+
 
       $output->writeln('<info>OK !</info>');
     }
@@ -103,11 +232,13 @@ class PlayersFixtureCommand extends ContainerAwareCommand
          $passwordEncoder = $this->getContainer()->get('security.password_encoder');
          $user = new User();
          $user->setEmail('jeremie.esparel@ynov.com');
+         $user->setNickname('Espa');
          $user->setPassword($passwordEncoder->encodePassword($user,'123'));
          $user->setRoles(['ROLE_ADMIN']);
          $em->persist($user);
          $user = new User();
          $user->setEmail('jeremie.espa@gmail.com');
+         $user->setNickname('Jerem');
          $user->setPassword($passwordEncoder->encodePassword($user,'123'));
          $user->setRoles(['ROLE_USER']);
          $em->persist($user);
@@ -128,7 +259,7 @@ class PlayersFixtureCommand extends ContainerAwareCommand
                 $review = new Review();
                 $review->setUser($user);
                 $review->setPlayer($player);
-                $review->setRating(mt_rand(1, 5));
+                $review->setRating(mt_rand(1, 10));
 
                 $em->persist($review);
             }

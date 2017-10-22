@@ -29,9 +29,9 @@ class Review
      * @Assert\NotBlank()
      * @Assert\Range(
      *      min = 1,
-     *      max = 5,
-     *      minMessage = "La note doit être comprise entre 1 et 5",
-     *      maxMessage = "La note doit être comprise entre 1 et 5"
+     *      max = 10,
+     *      minMessage = "La note doit être comprise entre 1 et 10",
+     *      maxMessage = "La note doit être comprise entre 1 et 10"
      * )
      */
      private $rating;

@@ -9,6 +9,7 @@ use SoccerBundle\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegisterController extends Controller
 {
@@ -19,6 +20,7 @@ class RegisterController extends Controller
          {
              $registerForm = $this->createFormBuilder(new User())
                  ->add('email', EmailType::class)
+                 ->add('nickname', TextType::class)
                  ->add('password', PasswordType::class)
                  ->add('save', SubmitType::class, array('label' => "Créer un compte"))
                  ->getForm()
@@ -36,6 +38,8 @@ class RegisterController extends Controller
                  $em = $this->getDoctrine()->getEntityManager();
                  $em->persist($user);
                  $em->flush();
+
+                 $this->sendWelcomeEmail($user);
 
                  $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                  $this->get('security.token_storage')->setToken($token);

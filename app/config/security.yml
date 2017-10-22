@@ -7,7 +7,7 @@ security:
         user_provider:
             entity:
                 class: SoccerBundle:User
-                property: email
+                property: nickname
 
 
     encoders:

@@ -43,15 +43,33 @@ class DetailController extends Controller
             return $this->render('SoccerBundle:Default:player.html.twig', [
                   'player' => $player,
                   'review_form' => $user ? $reviewForm->createView() : null,
+                  'moyenne' => $this->getAverageRating($player->getReviews())
               ]);
+        }
+
+
+        private function getAverageRating($reviews)
+        {
+          if(count($reviews)<1)
+          {
+            return false;
+          }
+          $moyenne = 0;
+          foreach($reviews as $review)
+          {
+            $moyenne += $review->getRating();
+          }
+          $moyenne /= count($reviews);
+          return $moyenne;
+
         }
 
         private function getReviewForm()
             {
                 $review = new Review();
                 $form = $this->createFormBuilder($review)
-                    ->add('rating', IntegerType::class, ['label' => "Note sur 5"])
-                    ->add('save', SubmitType::class, array('label' => "Noter l'équipe"))
+                    ->add('rating', IntegerType::class, ['label' => "Note sur 10"])
+                    ->add('save', SubmitType::class, array('label' => "Noter le player"))
                     ->getForm()
                 ;
 

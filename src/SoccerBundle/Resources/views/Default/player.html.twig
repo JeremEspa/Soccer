@@ -1,45 +1,60 @@
 {% extends 'bootstrap/layout.html.twig' %}
 
-{% block title %}{{ player.firstname }} {{ player.lastname }}{% endblock %}
+{% block title %}{{ player.firstname }}
+  {{ player.lastname }}{% endblock %}
 
 {% block content %}
-    <div class="jumbotron">
-        <h1><i class="fa fa-user"></i> Détail du Player</h1>
-    </div>
+  <div class="jumbotron">
+    <h1>
+      <i class="fa fa-user"></i>
+      Détail du Player</h1>
+  </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <img class="img-thumbnail float-right" src="{{ asset(player.image) }}" />
-        </div>
-        <div class="col-md-9">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Prénom : {{ player.firstname }}</li>
-                    <li class="list-group-item">Nom : {{ player.lastname }}</li>
-                    <li class="list-group-item">Club : {{ player.team }}</li>
-                    <li class="list-group-item">Poste : {{ player.position }}</li>
-                </ul>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-3">
+      <img class="img-thumbnail float-right" src="{{ asset(player.image) }}"/>
     </div>
+    <div class="col-md-9">
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Prénom :
+            {{ player.firstname }}</li>
+          <li class="list-group-item">Nom :
+            {{ player.lastname }}</li>
+          <li class="list-group-item">Club :
+            {{ player.team }}</li>
+          <li class="list-group-item">Poste :
+            {{ player.position }}</li>
+          <li class="list-group-item">Moyenne :
+            {{ moyenne }}/10</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<hr class="calotte">
-<h2>Liste des avis</h2>
-{% for review in player.reviews %}
+  <hr class="calotte">
+  <h2>Liste des avis</h2>
+  {% for review in player.reviews %}
     <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">{{ review.user.email }} a noté {{ review.rating }} / 5</h4>
-        </div>
+      <div class="card-body">
+        <p class="card-title">{{ review.user.nickname }}
+          a noté
+          {{ review.rating }}
+          / 10</p>
+      </div>
     </div>
 
- {% endfor %}
- <hr class="calotte">
+  {% endfor %}
+  <hr class="calotte">
 
-    {% if review_form %}
-        <h2>Ajouter une note</h2>
-
-        {% form_theme review_form 'bootstrap/form_theme.html.twig' %}
-        {{ form(review_form) }}
-
-    {% endif %}
-{% endblock %}
+  {% if review_form %}
+    <h2>Ajouter une note</h2>
+<div class="add">
+    {% form_theme review_form 'bootstrap/form_theme.html.twig' %}
+    {{ form(review_form) }}{% else %}
+    <a href="{{ path('login') }}">Connectez-vous pour noter le player</a><br>
+    <a href="{{ path('listplayer_list') }}">Revenir à la liste</a>{% endif %}
+</div>
+<div class="tchoin2">
+</div>
+  {% endblock %}

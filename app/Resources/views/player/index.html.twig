@@ -5,7 +5,7 @@
     <h1>Liste des Players</h1>
 </div>
 
-
+<div class="table tchoin">
     <table>
         <thead>
             <tr>
@@ -30,9 +30,6 @@
                 <td>
                     <ul>
 
-                        <a href="{{ path('admin_player_show', { 'id': player.id }) }}"><input type="submit" value="Show"</a>
-
-
                         <a href="{{ path('admin_player_edit', { 'id': player.id }) }}"><input type="submit" value="Edit"</a>
 
                     </ul>
@@ -41,10 +38,11 @@
         {% endfor %}
         </tbody>
     </table>
+  </div>
 
+<div class="loulou">
     <ul>
-        <li>
-            <a href="{{ path('admin_player_new') }}">Create a new player</a>
-        </li>
+      <a href="{{ path('admin_player_new') }}">Create a new player</a>
     </ul>
+</div>
 {% endblock %}

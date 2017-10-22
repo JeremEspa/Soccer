@@ -1,9 +1,12 @@
 {% extends 'bootstrap/layout.html.twig' %}
 
 {% block content %}
+<div class="login">
+  <div class="jumbotron">
     <h1>Player</h1>
+  </div>
 
-    <table>
+    <table class="table table-bordered">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -32,17 +35,17 @@
         </tbody>
     </table>
 
+<div class="tchoin">
     <ul>
-        <li>
-            <a href="{{ path('admin_player_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_player_edit', { 'id': player.id }) }}">Edit</a>
-        </li>
-        <li>
+
+            <a href="{{ path('admin_player_edit', { 'id': player.id }) }}"><input type="submit" value="Edit"></a>
+
+
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
+
     </ul>
+</div>
+</div>
 {% endblock %}

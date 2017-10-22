@@ -1,23 +1,24 @@
 {% extends 'bootstrap/layout.html.twig' %}
 
 {% block content %}
-<div class="jumbotron">
-    <h1>Edition Player</h1>
+<div class="login">
+  <div class="jumbotron">
+    <h1>Edition de Player</h1>
+  </div>
+
+  {{ form_start(edit_form) }}
+  {{ form_widget(edit_form) }}
+<div class="tchoin">
+  <input type="submit" value="Edit"/>
+  {{ form_end(edit_form) }}
+
+  <ul>
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+
+    <a href="{{ path('listplayer_list') }}">Revenir à la liste</a>
+  </ul>
 </div>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-
-            <a href="{{ path('admin_player_index') }}"><input type="submit" value="Back to the list"> </a>
-
-
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-
-    </ul>
+</div>
 {% endblock %}

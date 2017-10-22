@@ -15,7 +15,9 @@
                 </li>
             {% endif %}
         </ul>
-
+      <div class="search">
+        <form action= "{{path('listplayer_list')}}"> <input placeholder="Recherche ton player" name="search"></form>
+      </div>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 {% if not is_granted('IS_AUTHENTICATED_FULLY') %}

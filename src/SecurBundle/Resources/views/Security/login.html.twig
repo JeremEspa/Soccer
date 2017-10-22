@@ -4,29 +4,35 @@
 
 {% block body %}
 <div class="container">
+  <div class="login">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
 
     <form class="form-signin" action="{{ path('login') }}" method="post">
+    <div class="jumbotron">
         <h2 class="form-signin-heading">Connexion</h2>
+    </div>
 
-        <label for="inputEmail" class="sr-only">Login</label>
+        <label for="inputEmail" class="sr-only">Nickname</label>
         <input
             type="text"
             name="_username"
             class="form-control"
-            placeholder="Login"
+            placeholder="Nickname"
             required autofocus value="{{ last_username }}"
         >
 
-        <label for="inputPassword" class="sr-only">Mot de passe</label>
-        <input type="password" name="_password" class="form-control" placeholder="Mot de passe" required>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="_password" class="form-control" placeholder="Password" required>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
     </form>
 
-    <a href="{{ path('user_register') }}">Créer un compte</a>
+    <a href="{{ path('user_register') }}">Créer un compte</a><br>
+    <a href="{{ path('listplayer_list') }}">Revenir à la liste</a>
+
+</div>
 </div>
 {% endblock %}

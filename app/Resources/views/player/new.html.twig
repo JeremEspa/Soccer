@@ -1,16 +1,23 @@
 {% extends 'bootstrap/layout.html.twig' %}
 
 {% block content %}
-    <h1>Player creation</h1>
+<div class="login">
+  <div class="jumbotron">
+    <h1>Création de Player</h1>
+  </div>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+    <div class="tchoin">
         <input type="submit" value="Create" />
+
     {{ form_end(form) }}
 
+
     <ul>
-        <li>
-            <a href="{{ path('admin_player_index') }}">Back to the list</a>
-        </li>
+            <a href="{{ path('admin_player_index') }}">Revenir à la liste</a>
     </ul>
+</div>
+</div>
+
 {% endblock %}
