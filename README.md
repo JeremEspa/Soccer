@@ -9,6 +9,7 @@ Projet réalisé par JEREMIE ESPAREL, NICOLAS DESHAYES, DYLAN CLAUSS.
 
 Setup
 
+```bash
 git clone git@github.com:JeremEspa/Soccer.git
 vagrant up
 vagrant ssh
@@ -23,5 +24,6 @@ Password : 123
 Login User :
 Nickname : Jerem
 Password : 123
+```
 
 Le site devrait être disponible à l'adresse http://localhost:1337.
