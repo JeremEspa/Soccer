@@ -7,10 +7,10 @@ Ce site répertorie des footballeurs. Chaque utilisateur pourra après s'être i
 
 Projet réalisé par JEREMIE ESPAREL, NICOLAS DESHAYES, DYLAN CLAUSS.
 
-Setup
+###Setup
 
 ```bash
-git clone git@github.com:JeremEspa/Soccer.git
+https://github.com/JeremEspa/Soccer.git
 vagrant up
 vagrant ssh
 make start
